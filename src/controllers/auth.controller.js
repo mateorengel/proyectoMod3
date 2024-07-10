@@ -4,7 +4,7 @@ import { comparar } from "../common/bycript.js";
 import jwt from 'jsonwebtoken';
 import 'dotenv/config'
 import { Status } from "../constants/index.js";
-async function login (req,res){
+async function login (req,res){//sd
     try {
         const {username,password}=req.body;
         const user=await User.findOne({
