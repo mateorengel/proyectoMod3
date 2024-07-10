@@ -20,6 +20,6 @@ export const Task=sequelize.define('tasks',{
     done:{
         type:DataTypes.BOOLEAN,
         defaultValue:false,
-    } 
+    }, 
 });
 

@@ -1,17 +1,14 @@
 import {User} from '../models/user.js';
 import {Task} from '../models/tasks.js';
+import {Status} from "../constants/index.js";
 import logger from '../logs/logger.js';
 async function getUsers(req,res){
     try {
         const users = await User.findAll({
-            attributes:['id','username','password','status'],
-            order:['id','DESC'],
-            where: {
-                where:{
-                    status: Status.ACTIVE
-                }
-            }
-        })
+            attributes: ['id', 'username', 'password', 'status'],
+            order: [['id','DESC']],
+            //where: {   status: Status.ACTIVE}
+        });
         res.json(users)
     } catch (error) {
         console.log('no se hizo el get users')
@@ -31,10 +28,10 @@ async function createUser(req,res){
     const{username,password}=req.body;
     try {
 
-        logger.info('[userController] createUser: '+ username)
+        logger.info('[userController] createUser: '+username)
         const user=await User.create({
             username,
-            password,
+            password
         });
         return res.json(user);
     } catch (error) {
