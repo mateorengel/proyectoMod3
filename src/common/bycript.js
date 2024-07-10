@@ -1,5 +1,5 @@
 import logger from "../logs/logger.js";
-import bycript from 'bcrypt';
+import bcrypt from 'bcrypt'
 import 'dotenv/config';
 export const encriptar= async (text)=>{
     try {
