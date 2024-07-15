@@ -13,12 +13,16 @@ async function login (req,res){//sd
         if (!user) 
             return res.status(404).json({message:'USUARIO NO ENCONTRADO'});
     
-        if(!await comparar(password, user.password))
+        if(!await comparar(password, user.password)){
+            console.log("No se hizo el login")
             return res.status(403).json({message:'usuario no autorizado'})
+        }
+            
         
-        const token=jwt.sign({userId:user.id},process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRES_SECOND,
-
+        const token=jwt.sign({userId:user.id},process.env.JWT_SECRET,{
+            expiresIn:eval(process.env.JWT_EXPIRES_SECOND),       
         });
+        console.log(token)
         return res.json({token});
     } catch (error) {
         logger.error(error.message);

@@ -28,9 +28,10 @@ async function createTask(req,res){
             name,
             userId,
         })
-        res.json(task)
+        res.json(tasks)
     } catch (error) {
         logger.error(error.message)
+        console.log("error al crear tarea");
         res.status(500).json({
             message:error.message
         })

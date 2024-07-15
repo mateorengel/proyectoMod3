@@ -44,7 +44,7 @@ async function createUser(req,res){
 async function getUser(req,res){
     const {id}=req.params;
     try {
-        logger.info('[userController] createUser: '+ username)
+        //logger.info('[userController] createUser: '+ username)
         const user=await User.findOne({
             attributes:['username','status'],
             where:{id}
@@ -83,7 +83,7 @@ const updateUser = async (req,res)=>{
     }
 }
  
-const activaInactive = async (req,res) =>{
+const activeInactive = async (req,res) =>{
     const {id}= req.params;
     const {status}=req.body;
     if(!status){return res.status(400).json({message: 'no existe el status'});
@@ -146,7 +146,7 @@ export default{
     createUser,
     getUser,
     updateUser,
-    activaInactive,
+    activeInactive,
     deleteUser,
     getTasks
 };
