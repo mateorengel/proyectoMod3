@@ -2,7 +2,8 @@ import { DataTypes } from "sequelize";
 import { Status } from "../constants/index.js";
 import {sequelize} from '../database/database.js'
 import { Task } from "./tasks.js";
-import { encriptar } from "../common/bycript.js";
+import {encriptar } from "../common/bycript.js";
+
 
 export const User=sequelize.define('users',{
     id:{
@@ -30,7 +31,7 @@ export const User=sequelize.define('users',{
     },
     status:{
         type:DataTypes.STRING,
-        DefaultValue:Status.ACTIVE,
+        defaultValue:Status.ACTIVE,
         validate:{
             isIn:{
                 args:[[Status.ACTIVE, Status.INACTIVE]],

@@ -9,14 +9,13 @@ async function getUsers(req,res){
             order: [['id','DESC']],
             //where: {   status: Status.ACTIVE}
         });
-        res.json(users)
+        res.json(users);
     } catch (error) {
-        console.log('no se hizo el get users')
+        console.log(error.message)
         logger.error(error.message)
         res.status(500).json({
             message:error.message
-        })
-        
+        }) 
     }
 }
 async function createUser(req,res){

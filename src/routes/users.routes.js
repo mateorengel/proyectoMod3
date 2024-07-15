@@ -9,12 +9,12 @@ const router = Router();
 router.post('/', usersController.createUser); */
 
 router
-  .route("/")
+  .route('/')
   .get(usersController.getUsers)
   .post(usersController.createUser);
 
 router
-  .route("/:id")
+  .route('/:id')
   .get(authenticateToken,usersController.getUser)
   .put(authenticateToken,usersController.updateUser)
   .delete(authenticateToken,usersController.deleteUser)
