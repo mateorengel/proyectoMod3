@@ -108,7 +108,7 @@ try {
 const deleteUser = async(req,res)=>{
     const {id}= req.params;
     try {
-        await Task.destroy({where:{id}});
+        await Task.destroy({where:{userId: id}});
         await User.destroy({where:{id}});
         return res.sendStatus(204);
     } catch (error) {
@@ -133,6 +133,7 @@ async function getTasks(req,res){
                 }
             }]
         })
+        res.json(user)
     } catch (error) {
         logger.error(error.message)
         res.status(500).json({
