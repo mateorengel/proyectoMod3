@@ -49,11 +49,11 @@ async function getTask(req,res){
             userId,
            }
         })
-        res.json(task)
+        res.json(tasks)
     } catch (error) {
         logger.error(error.message)
         res.status(500).json({
-            message:error.message
+            message:"Task no fue definida"//error.message
         })
     }
 }
